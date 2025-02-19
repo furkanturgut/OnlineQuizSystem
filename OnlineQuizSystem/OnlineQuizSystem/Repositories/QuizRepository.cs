@@ -1,6 +1,9 @@
-﻿using OnlineQuizSystem.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Validations;
+using OnlineQuizSystem.Data;
 using OnlineQuizSystem.Interfaces;
 using OnlineQuizSystem.Models;
+using System.Linq;
 
 namespace OnlineQuizSystem.Repositories
 {
@@ -26,6 +29,8 @@ namespace OnlineQuizSystem.Repositories
             return Save();
         }
 
+      
+
         public ICollection<Quiz> GetAllQuiz()
         {
             var quizzes = _context.Quizzes.OrderBy(x => x.Id).ToList();
@@ -38,6 +43,19 @@ namespace OnlineQuizSystem.Repositories
             return quiz;
         }
 
+        public Quiz GetQuizWithQuestionsAndOptions(int QuizId)
+        {
+            var quiz = _context.Quizzes.
+                Include(q => q.QuizQuestions).
+                ThenInclude(q => q.QuestionOptions).
+                FirstOrDefault(qi => qi.Id == QuizId);
+            return quiz;
+        }
+
+      
+
+   
+
         public bool QuizExist(int Id)
         {
             return _context.Quizzes.Any(qi => qi.Id == Id);
@@ -48,6 +66,8 @@ namespace OnlineQuizSystem.Repositories
             var saved = _context.SaveChanges();
             return saved > 0 ? true : false;
         }
+
+      
 
         public bool UpdateQuiz(Quiz quiz)
         {

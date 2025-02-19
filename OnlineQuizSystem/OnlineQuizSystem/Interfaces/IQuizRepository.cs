@@ -9,7 +9,7 @@ namespace OnlineQuizSystem.Interfaces
         bool DeleteQuiz (int Id);
         Quiz GetQuiz (int Id);
         ICollection<Quiz> GetAllQuiz ();
-
+        Quiz GetQuizWithQuestionsAndOptions(int QuizId);
         bool QuizExist (int Id);
         bool Save();
 

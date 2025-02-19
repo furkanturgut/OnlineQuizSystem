@@ -1,4 +1,5 @@
-﻿using OnlineQuizSystem.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using OnlineQuizSystem.Data;
 using OnlineQuizSystem.Interfaces;
 using OnlineQuizSystem.Models;
 
@@ -18,9 +19,9 @@ namespace OnlineQuizSystem.Repositories
             return _context.UserAnswers.Any(a => a.Id == Id);
         }
 
-        public bool CreateAnswer(QuizUserAnswer answer)
+        public bool CreateAnswer(List<QuizUserAnswer> answers)
         {
-            _context.Add(answer);
+            _context.AddRange(answers);
             return Save();
         }
 
@@ -33,13 +34,16 @@ namespace OnlineQuizSystem.Repositories
 
         public ICollection<QuizUserAnswer> GetAllAnswers()
         {
-            var answers = _context.UserAnswers.OrderBy(a => a.Id).ToList();
+            var answers = _context.UserAnswers
+            .Include(ua => ua.Question)
+            .Include(ua => ua.QuestionOption)
+            .ToList();
             return answers;
         }
 
         public QuizUserAnswer GetAnswer(int Id)
         {
-            var answer = _context.UserAnswers.Where(ai => ai.Id == Id).FirstOrDefault();
+            var answer = _context.UserAnswers.Include(ua => ua.Question).Include(ua => ua.QuestionOption).FirstOrDefault();
             return answer;
         }
 

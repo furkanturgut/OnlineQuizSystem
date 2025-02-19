@@ -6,7 +6,7 @@ namespace OnlineQuizSystem.Interfaces
     {
         // create, read, update, delete, exist, save
 
-        bool CreateAnswer(QuizUserAnswer answer);
+        bool CreateAnswer(List<QuizUserAnswer> answers);
         QuizUserAnswer GetAnswer (int Id);
         ICollection<QuizUserAnswer> GetAllAnswers ();
         bool UpdateAnswer (QuizUserAnswer answer);

@@ -38,6 +38,12 @@ namespace OnlineQuizSystem.Repositories
             return option;
         }
 
+        public ICollection<QuestionOption> GetOptionsOfAQuestion(int QuestionId)
+        {
+            var options = _context.QuestionOptions.Where(qi => qi.QuizQuestion.Id == QuestionId).ToList();
+            return options;
+        }
+
         public bool OptionExist(int Id)
         {
             return _context.QuestionOptions.Any(qi => qi.Id == Id);
