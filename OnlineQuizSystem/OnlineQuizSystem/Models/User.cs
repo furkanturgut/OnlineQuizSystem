@@ -1,11 +1,16 @@
-﻿namespace OnlineQuizSystem.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace OnlineQuizSystem.Models
 {
     public class User
     {
         public  int Id  { get; set; }
-        public string FirstName { get; set; }    
-        public string  LastName { get; set; }
+        [Required]
+        public required string FirstName { get; set; }
+        [Required]
+        public required string  LastName { get; set; }
         public string Email { get; set; }
         public int score { get; set; }
+        public ICollection<Session> Sessions { get; set; }
     }
 }
