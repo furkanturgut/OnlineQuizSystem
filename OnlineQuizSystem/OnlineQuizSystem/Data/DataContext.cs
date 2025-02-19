@@ -16,5 +16,6 @@ namespace OnlineQuizSystem.Data
         public DbSet<QuizQuestion> QuizQuestions { get; set; }
         public DbSet<QuestionOption> QuestionOptions { get; set; }
         public DbSet<QuizUserAnswer> UserAnswers { get; set; }
+        public DbSet<Session> Sessions { get; set; }
     }
 }
