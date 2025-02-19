@@ -1,73 +1,66 @@
-Online Quiz System API
+# 🏆 Online Quiz System API
 
-📌 Proje Açıklaması
+## 📌 **Proje Açıklaması**
 
 Online Quiz System API, çevrimiçi bir quiz (sınav) sistemi için geliştirilmiş bir backend API’sidir. Kullanıcıların quiz oluşturmasına, quizlere katılmasına ve sonuçları görmesine olanak tanır. Session yönetimi için Redis kullanılmıştır ve oturum verileri belirli bir süre sonra MySQL veritabanına aktarılır.
 
-🚀 Kullanılan Teknolojiler
+## 🚀 **Kullanılan Teknolojiler**
 
 Bu projede aşağıdaki teknolojiler ve kütüphaneler kullanılmıştır:
 
-Backend: .NET (ASP.NET Core)
+- **Backend:** .NET (ASP.NET Core)
+- **Dil:** C#
+- **Veritabanı:** MySQL (Pomelo MySQL)
+- **Cache:** Redis (StackExchange.Redis)
+- **ORM:** Entity Framework Core
+- **Paketler:**
+  - AutoMapper
+  - ASP.NET MVC
+  - Entity Framework Core, Entity Design, Entity Tools
+  - StackExchange.Redis (Cache için)
+  - Pomelo MySQL
 
-Dil: C#
-
-Veritabanı: MySQL (Pomelo MySQL)
-
-Cache: Redis (StackExchange.Redis)
-
-ORM: Entity Framework Core
-
-Paketler:
-
-AutoMapper
-
-ASP.NET MVC
-
-Entity Framework Core, Entity Design, Entity Tools
-
-StackExchange.Redis (Redis için)
-
-Pomelo MySQL
-
-⚡ Kurulum
+## ⚡ **Kurulum**
 
 Projeyi çalıştırmak için aşağıdaki adımları takip edebilirsin:
 
-Gereksinimleri yükle:
+1. **Gereksinimleri yükle:**
 
-.NET SDK (uygun sürüm)
+   - .NET SDK (uygun sürüm)
+   - MySQL Server
+   - Redis Server
 
-MySQL Server
+2. **Bağımlılıkları yükle:**
 
-Redis Server
+   ```sh
+   dotnet restore
+   ```
 
-Bağımlılıkları yükle:
+3. **Veritabanını hazırla:**
 
-dotnet restore
+   - MySQL’de bir veritabanı oluştur.
+   - `appsettings.json` dosyasında MySQL bağlantı bilgilerini güncelle.
 
-Veritabanını hazırla:
+4. **Projeyi çalıştır:**
 
-MySQL’de bir veritabanı oluştur.
+   ```sh
+   dotnet run
+   ```
 
-appsettings.json dosyasında MySQL bağlantı bilgilerini güncelle.
+## 🎯 **Kullanım**
 
-Projeyi çalıştır:
+- Quiz oluşturabilir, silebilir ve güncelleyebilirsin.
+- Kullanıcılar quizlere katılabilir ve sonuçları alabilir.
+- Quiz başlatmak için session oluiturulur,  quiz soruları bittiğinde session sonlandırılır. 
+- Session verileri Redis’e kaydedilir ve session bittiginde database aktarılır.
 
-dotnet run
-
-🎯 Kullanım
-
-Quiz oluşturabilir, silebilir ve güncelleyebilirsin.
-
-Kullanıcılar quizlere katılabilir ve sonuçları alabilir.
-
-Session verileri Redis’e kaydedilir ve süre sonunda MySQL’e aktarılır.
-
-🔥 Katkıda Bulunma
+## 🔥 **Katkıda Bulunma**
 
 Bu proje kişisel bir proje olarak geliştirilmiştir, ancak kodu isteyen alıp kullanabilir.
 
-📜 Lisans
+## 📜 **Lisans**
 
 Bu proje herhangi bir lisans içermemektedir.
+
+---
+
